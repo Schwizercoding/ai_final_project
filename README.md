@@ -61,12 +61,42 @@ Model based on `google/vit-base-patch16-224` with frozen layers except final cla
 - Optimizer: AdamW (via `Trainer` API)
 - Evaluation: Per epoch on validation set
 
-### Accuracy:
+##Difference between Augmentation and without
+### Accuracy with Augmentation:
 | Epoch | Val Accuracy |
 |-------|---------------|
 | 1     | 93.1%         |
 | 2     | 96.5%         |
 | 3     | 97.0%         |
+| 4     | 97.2%         |
+| 5     | 97.2%         |
+
+### Accuracy without Augmentation:
+| Epoch | Val Accuracy |
+|-------|---------------|
+| 1     | 96.9%         |
+| 2     | 97.5%         |
+| 3     | 97.4%         |
+| 4     | 97.7%         |
+| 5     | 97.5%         |
+
+
+The chart below shows two training runs of the ViT model:
+
+- **Dark blue line**: Model trained with image augmentations such as `RandomResizedCrop`, `ColorJitter`, and `HorizontalFlip`
+- **Light blue line**: Model trained without any augmentation (only `Resize(224x224)` and `ToTensor()`)
+![image](https://github.com/user-attachments/assets/678c8dd2-3f7b-4b23-8645-b56815142236)
+
+
+
+Although data augmentation is typically used to improve generalization, this experiment revealed the opposite:
+
+- The model **without augmentation achieved a higher validation accuracy of 97.4%**
+- The model **with augmentation reached 97.2%**
+
+**Interpretation:**  
+Due to the limited training set size (only 5,000 images), the augmentations likely introduced too much variation. Without augmentation, the model was able to focus more effectively on the key visual features and achieve better performance.
+
 
 ### TensorBoard:
 Training progress and metrics logged locally (or optionally via HuggingFace Hub).
@@ -97,6 +127,7 @@ Used OpenAI's `clip-vit-base-patch32` with text prompts like `"a photo of sushi"
 
 ## Conclusion
 - Transfer learning with data augmentation significantly boosts performance.
+- Augmentation shouldn't be too strong or results will be lower.
 - CLIP zero-shot models are strong out-of-the-box benchmarks.
 - ViT models are highly suitable for food classification tasks.
 
