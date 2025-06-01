@@ -56,7 +56,7 @@ This model supports 101 food categories including:
 Model based on `google/vit-base-patch16-224` with frozen layers except final classifier.
 
 ### Hyperparameters:
-- Epochs: 3
+- Epochs: 5
 - Batch Size: 8
 - Optimizer: AdamW (via `Trainer` API)
 - Evaluation: Per epoch on validation set
