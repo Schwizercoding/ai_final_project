@@ -9,7 +9,7 @@ This project focuses on classifying food images from the [Food-101 dataset](http
 ## URLs
 | Resource        | Link |
 |----------------|------|
-| HuggingFace Space | [Food101 Classifier Space](https://huggingface.co/spaces/jarinschnierl/food101-vit) |
+| HuggingFace Space | [Food101 Classifier Space](https://huggingface.co/spaces/jarinschnierl/AI-final-project) |
 | HuggingFace Model | [ViT Food101 Model](https://huggingface.co/jarinschnierl/vit-base-food101) |
 | Zero-Shot Notebook | [Zero-Shot Notebook](https://huggingface.co/spaces/jarinschnierl/clip-food101-zero-shot) |
 
